@@ -35,7 +35,7 @@ Game::Game( MainWindow& wnd )
 	std::uniform_int_distribution<int> vDist( -1,1 );
 	for( int i = 0; i < nPoo; ++i )
 	{
-		poos[i].Init( xDist( rng ),yDist( rng ),vDist( rng ),vDist( rng ) );
+		poos[i].Init( xDist( rng ),yDist( rng ),0.5f,0.5f );
 	}
 	title.Play();
 }
@@ -50,6 +50,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	
 	goal.UpdateColor();
 	if( isStarted && !isGameOver )
 	{
@@ -28433,6 +28434,7 @@ void Game::ComposeFrame()
 	if( !isStarted )
 	{
 		DrawTitleScreen( 325,211 );
+		gfx.DrawCircle(200, 200, 100, Colors::Blue);
 	}
 	else
 	{

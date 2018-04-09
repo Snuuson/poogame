@@ -17,10 +17,10 @@ public:
 	}
 	bool TestCollision( const Dude& dude ) const
 	{
-		const int duderight = dude.GetX() + dude.GetWidth();
-		const int dudebottom = dude.GetY() + dude.GetHeight();
-		const int pooright = x + dimension;
-		const int poobottom = y + dimension;
+		const float duderight = dude.GetX() + dude.GetWidth();
+		const float dudebottom = dude.GetY() + dude.GetHeight();
+		const float pooright = x + dimension;
+		const float poobottom = y + dimension;
 
 		return
 			duderight >= x &&

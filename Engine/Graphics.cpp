@@ -240,6 +240,38 @@ Graphics::Graphics( HWNDKey& key )
 		_aligned_malloc( sizeof( Color ) * Graphics::ScreenWidth * Graphics::ScreenHeight,16u ) );
 }
 
+void Graphics::DrawCircle(int x_in, int y_in, int radius, Color c)
+{
+	for (int y = y_in - radius; y < y_in + radius+1; y++) {
+		for (int x = x_in - radius; x < x_in + radius+1; x++) {
+			if (y >= 0 && x >= 0 && y < Graphics::ScreenHeight && x < Graphics::ScreenWidth) {
+
+				if (sqrt(pow(y_in-y, 2) + pow(x_in-x, 2)) <= radius && !(sqrt(pow(y_in - y, 2) + pow(x_in - x, 2)) < 50)) {
+					PutPixel(y, x, c);
+				}
+			}
+		}
+	}
+
+
+}
+
+void Graphics::DrawDonut(int x_in, int y_in, int radius, Color c)
+{
+	for (int y = y_in - radius; y < y_in + radius + 1; y++) {
+		for (int x = x_in - radius; x < x_in + radius + 1; x++) {
+			if (y >= 0 && x >= 0 && y < Graphics::ScreenHeight && x < Graphics::ScreenWidth) {
+
+				if (sqrt(pow(y_in - y, 2) + pow(x_in - x, 2)) <= radius && !(sqrt(pow(y_in - y, 2) + pow(x_in - x, 2)) < 50)) {
+					PutPixel(y, x, c);
+				}
+			}
+		}
+	}
+
+
+}
+
 Graphics::~Graphics()
 {
 	// free sysbuffer memory (aligned free)
